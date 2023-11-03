@@ -1,3 +1,6 @@
+/**
+ * Abstract class for the different shapes used in the library.
+ */
 export class Drawable {
   #color;
   #thickness;
@@ -5,13 +8,17 @@ export class Drawable {
 
   #boundingBox;
 
-  constructor(color, thickness) {
-    this.#color = color;
-    this.#thickness = thickness;
+  constructor() {
+    this.#color = "#000000";
+    this.#thickness = 1;
   }
 
   get color() {
     return this.#color;
+  }
+
+  set color(value) {
+    this.#color = value;
   }
 
   get thickness() {
@@ -36,5 +43,9 @@ export class Drawable {
 
   overlaps(otherDrawable) {
   return this.#boundingBox.overlaps(otherDrawable.boundingBox);
+  }
+
+  move(dx, dy) {
+    throw new Error("Must be implemented by subclasses");
   }
 }

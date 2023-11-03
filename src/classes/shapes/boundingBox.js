@@ -1,5 +1,8 @@
 import { Position } from "../utils/position";
 
+/**
+ * Represents the rectangular area enclosing a shape.
+ */
 export class BoundingBox {
   #minPoint;
   #maxPoint;
@@ -7,8 +10,8 @@ export class BoundingBox {
   /**
    * Creates a bounding box from min and max points
    *
-   * @param {Position} minPoint 
-   * @param {Position} maxPoint 
+   * @param {Position} minPoint The position of the minimum x and y values.
+   * @param {Position} maxPoint The position of the maximum x and y values.
    */
   constructor(minPoint, maxPoint) {
     this.#minPoint = minPoint;
@@ -55,6 +58,13 @@ export class BoundingBox {
            this.#maxPoint.x > otherBox.#minPoint.x &&
            this.#minPoint.y < otherBox.#maxPoint.y &&
            this.#maxPoint.y > otherBox.#minPoint.y;
+  }
+
+  move(dx, dy) {
+    this.#minPoint.x += dx;
+    this.#minPoint.y += dy;
+    this.#maxPoint.x += dx;
+    this.#maxPoint.y += dy;
   }
 
 }
