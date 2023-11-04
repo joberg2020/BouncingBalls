@@ -41,6 +41,10 @@ export class Drawable {
     return this.#boundingBox;
   }
 
+  set boundingBox(value) {
+    this.#boundingBox = value;
+  }
+
   overlaps(otherDrawable) {
   return this.#boundingBox.overlaps(otherDrawable.boundingBox);
   }

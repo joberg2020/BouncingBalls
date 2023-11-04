@@ -26,11 +26,12 @@ export class Line extends Drawable {
   }
 
   #initBoundingBoxLine() {
-    return new BoundingBox(
+    return new BoundingBox(new Position(
       Math.min(this.#start.x, this.#end.x),
-      Math.min(this.#start.y, this.#end.y),
+      Math.min(this.#start.y, this.#end.y)),
+      new Position(
       Math.max(this.#start.x, this.#end.x),
-      Math.max(this.#start.y, this.#end.y)
+      Math.max(this.#start.y, this.#end.y))
     );
   }
 }

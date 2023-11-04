@@ -26,6 +26,8 @@ export class Circle extends Drawable {
     this.boundingBox.move(dx, dy);
   }
 
+
+
   get center() {
     return this.#center;
   }
@@ -39,7 +41,7 @@ export class Circle extends Drawable {
   }
 
   set radius(value) {
-    if (typeof value == Number && value > 0) {
+    if (typeof value == 'number' && value > 0) {
     this.#radius = value;
     }
     else {
@@ -48,7 +50,9 @@ export class Circle extends Drawable {
   }
 
   #initBoundingBoxCircle() {
-    return new BoundingBox(this.#center.x - this.#radius,
-        this.#center.y - this.#radius);
+    return new BoundingBox(new Position(this.#center.x - this.#radius,
+        this.#center.y - this.#radius), 
+        new Position(this.#center.x + this.#radius,
+          this.#center.y + this.#radius));
   }
 }

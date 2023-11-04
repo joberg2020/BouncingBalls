@@ -37,10 +37,8 @@ export class Polygon extends Drawable {
     });
 
     this.boundingBox = new BoundingBox(
-      minX,
-      minY,
-      maxX,
-      maxY
+      new Position(minX, minY),
+      new Position(maxX, maxY));
     );
   }
 
