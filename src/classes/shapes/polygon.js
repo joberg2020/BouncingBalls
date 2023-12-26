@@ -39,7 +39,6 @@ export class Polygon extends Drawable {
     this.boundingBox = new BoundingBox(
       new Position(minX, minY),
       new Position(maxX, maxY));
-    );
   }
 
   get verticies() {

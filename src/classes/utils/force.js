@@ -8,6 +8,17 @@ export class Force {
     this.#y = y;
   }
 
+
+  /**
+   * Adds a delta force to the force vector.
+   *
+   * @param {Force} force 
+   */
+  add(force) {
+    this.#x += force.x;
+    this.#y += force.y;
+  }
+
   get x() {
     return this.#x;
   }

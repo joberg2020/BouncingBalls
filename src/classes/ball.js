@@ -43,13 +43,30 @@ export class Ball extends GameObject {
     return this.#velocity;
   }
 
+  /**
+   * Updates the balls velocity based on elapsed time.
+   *
+   * @param {number} deltaTime The time elapsed since the last update.
+   */
+  updateVelocity(deltaTime) {
+    this.#velocity.add(this.acceleration.multiply(deltaTime));
+  }
+
+  /**
+   * Updates the balls position based on elapsed time and current velocity.
+   *
+   * @param {number} deltaTime The time elapsed since the last update.
+   */
+  updatePosition(deltaTime) {
+    this.move(this.velocity.getPositionalChange(deltaTime));
+  }
+
   get force() {
     return this.#force;
   }
 
-  updateForce(force) {
-    this.#force.x += force.x;
-    this.#force.y += force.y;
+  addForce(force) {
+    this.#force.add(force);
   }
 
   get mass() {
@@ -60,17 +77,4 @@ export class Ball extends GameObject {
     return this.#id;
   }
 
-  get force() {
-    return this.#force;
-  }
-
-  /**
-   * Sets the current force acting on the ball.
-   *
-   * @param {Force} The force to apply to the ball.
-   */
-  set force(value) {
-    this.#force.x = value.x;
-    this.#force.y = value.y;
-  }
 }

@@ -32,7 +32,7 @@ describe("Testing functions of the Ball class", () => {
   describe("Testing acceleration", () => {
     it("should return the acceleration of the ball", () => {
       const ball = new Ball(new Position(0, 0), 10, 1, 1);
-      ball.updateForce(new Force(10, 10));
+      ball.addForce(new Force(10, 10));
       expect(ball.acceleration).toEqual(new Acceleration(10, 10));
     });
   });
@@ -41,6 +41,28 @@ describe("Testing functions of the Ball class", () => {
       const ball1 = new Ball(new Position(0, 0), 10, 1, 1);
       const ball2 = new Ball(new Position(10, 10), 10, 1, 2);
       expect(ball1.overlaps(ball2)).toBe(true);
+    });
+  });
+  describe("Testing updateVelocity", () => {
+    it("should update the velocity of the ball", () => {
+      const ball = new Ball(new Position(0, 0), 10, 1, 1);
+      ball.addForce(new Force(10, 10));
+      ball.updateVelocity(1);
+      expect(ball.velocity).toEqual(new Velocity(10, 10));
+    });
+    it("should update the velocity of ball with other weight", () => {
+      const ball = new Ball(new Position(0, 0), 10, 2, 1);
+      ball.addForce(new Force(10, 10));
+      ball.updateVelocity(1);
+      expect(ball.velocity).toEqual(new Velocity(5, 5));
+    });
+    it("should update the velocity over time", () => {
+      const ball = new Ball(new Position(0, 0), 10, 1, 1);
+      ball.addForce(new Force(1, 0));
+      ball.updateVelocity(1);
+      expect(ball.velocity).toEqual(new Velocity(1, 0));
+      ball.updateVelocity(1);
+      expect(ball.velocity).toEqual(new Velocity(2, 0));
     });
   });
 });

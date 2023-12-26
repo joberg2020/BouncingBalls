@@ -1,4 +1,8 @@
+import { Drawable } from "./shapes/drawable";
 export class GameObject {
+  /**
+   * @type {Drawable}
+   */
   #drawableShape;
 
   constructor(shape) {
