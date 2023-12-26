@@ -2,12 +2,11 @@ import { Position } from "../utils/position";
 import { Drawable } from "./drawable";
 
 export class Line extends Drawable {
-
   #start;
   #end;
 
   /**
-   * 
+   *
    * @param {Position} start The position of the start point of the line.
    * @param {Position} end The position of the end point of the line.
    */
@@ -26,12 +25,15 @@ export class Line extends Drawable {
   }
 
   #initBoundingBoxLine() {
-    return new BoundingBox(new Position(
-      Math.min(this.#start.x, this.#end.x),
-      Math.min(this.#start.y, this.#end.y)),
+    return new BoundingBox(
       new Position(
-      Math.max(this.#start.x, this.#end.x),
-      Math.max(this.#start.y, this.#end.y))
+        Math.min(this.#start.x, this.#end.x),
+        Math.min(this.#start.y, this.#end.y),
+      ),
+      new Position(
+        Math.max(this.#start.x, this.#end.x),
+        Math.max(this.#start.y, this.#end.y),
+      ),
     );
   }
 }

@@ -6,7 +6,7 @@ import { Position } from "../utils/position";
 export class BoundingBox {
   #minPoint;
   #maxPoint;
-  
+
   /**
    * Creates a bounding box from min and max points
    *
@@ -37,14 +37,16 @@ export class BoundingBox {
   /**
    * Checks if a point is contained within this bounding box.
    *
-   * @param {Position} point 
+   * @param {Position} point
    * @returns {boolean} True if point is contained insde box, false otherwise.
    */
   containsPoint(point) {
-    return point.x >= this.#minPoint.x &&
-           point.x <= this.#maxPoint.x &&
-           point.y >= this.#minPoint.y &&
-           point.y <= this.#maxPoint.y;
+    return (
+      point.x >= this.#minPoint.x &&
+      point.x <= this.#maxPoint.x &&
+      point.y >= this.#minPoint.y &&
+      point.y <= this.#maxPoint.y
+    );
   }
 
   /**
@@ -54,10 +56,12 @@ export class BoundingBox {
    * @returns {boolean} True if overlap, false otherwise.
    */
   overlaps(otherBox) {
-    return this.#minPoint.x < otherBox.#maxPoint.x &&
-           this.#maxPoint.x > otherBox.#minPoint.x &&
-           this.#minPoint.y < otherBox.#maxPoint.y &&
-           this.#maxPoint.y > otherBox.#minPoint.y;
+    return (
+      this.#minPoint.x < otherBox.#maxPoint.x &&
+      this.#maxPoint.x > otherBox.#minPoint.x &&
+      this.#minPoint.y < otherBox.#maxPoint.y &&
+      this.#maxPoint.y > otherBox.#minPoint.y
+    );
   }
 
   move(dx, dy) {
@@ -66,5 +70,4 @@ export class BoundingBox {
     this.#maxPoint.x += dx;
     this.#maxPoint.y += dy;
   }
-
 }

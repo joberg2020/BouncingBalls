@@ -2,7 +2,6 @@ import { Drawable } from "./drawable";
 import { Position } from "../utils/position";
 
 export class Polygon extends Drawable {
-
   #verticies = [];
 
   /**
@@ -17,7 +16,7 @@ export class Polygon extends Drawable {
   }
 
   move(dx, dy) {
-    this.#verticies.forEach(vertex => {
+    this.#verticies.forEach((vertex) => {
       vertex.x += dx;
       vertex.y += dy;
     });
@@ -29,7 +28,7 @@ export class Polygon extends Drawable {
     let maxX = -Infinity;
     let maxY = -Infinity;
 
-    this.verticies.forEach(vertex => {
+    this.verticies.forEach((vertex) => {
       minX = Math.min(minX, vertex.x);
       minY = Math.min(minY, vertex.y);
       maxX = Math.max(maxX, vertex.x);
@@ -38,7 +37,8 @@ export class Polygon extends Drawable {
 
     this.boundingBox = new BoundingBox(
       new Position(minX, minY),
-      new Position(maxX, maxY));
+      new Position(maxX, maxY),
+    );
   }
 
   get verticies() {
@@ -46,7 +46,7 @@ export class Polygon extends Drawable {
   }
 
   set verticies(value) {
-    if(value instanceof Array) {
+    if (value instanceof Array) {
       this.#verticies = value;
     } else {
       throw new Error("Verticies must be an array");

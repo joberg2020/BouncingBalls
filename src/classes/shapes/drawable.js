@@ -46,7 +46,7 @@ export class Drawable {
   }
 
   overlaps(otherDrawable) {
-  return this.#boundingBox.overlaps(otherDrawable.boundingBox);
+    return this.#boundingBox.overlaps(otherDrawable.boundingBox);
   }
 
   move(dx, dy) {

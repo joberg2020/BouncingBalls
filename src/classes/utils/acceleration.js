@@ -1,7 +1,6 @@
-import {Velocity} from './velocity';
+import { Velocity } from "./velocity";
 
 export class Acceleration {
-
   #x;
   #y;
 

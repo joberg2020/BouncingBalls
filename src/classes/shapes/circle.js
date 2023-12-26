@@ -3,10 +3,9 @@ import { BoundingBox } from "./boundingBox";
 import { Position } from "../utils/position";
 
 export class Circle extends Drawable {
-
   #center;
   #radius;
-  
+
   /**
    * Creates a new Circle.
    *
@@ -26,8 +25,6 @@ export class Circle extends Drawable {
     this.boundingBox.move(dx, dy);
   }
 
-
-
   get center() {
     return this.#center;
   }
@@ -41,18 +38,23 @@ export class Circle extends Drawable {
   }
 
   set radius(value) {
-    if (typeof value == 'number' && value > 0) {
-    this.#radius = value;
-    }
-    else {
+    if (typeof value == "number" && value > 0) {
+      this.#radius = value;
+    } else {
       throw new Error("Radius must be a positive number");
     }
   }
 
   #initBoundingBoxCircle() {
-    return new BoundingBox(new Position(this.#center.x - this.#radius,
-        this.#center.y - this.#radius), 
-        new Position(this.#center.x + this.#radius,
-          this.#center.y + this.#radius));
+    return new BoundingBox(
+      new Position(
+        this.#center.x - this.#radius,
+        this.#center.y - this.#radius,
+      ),
+      new Position(
+        this.#center.x + this.#radius,
+        this.#center.y + this.#radius,
+      ),
+    );
   }
 }

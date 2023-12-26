@@ -5,7 +5,6 @@ import { Acceleration } from "./utils/acceleration";
 import { Velocity } from "./utils/velocity";
 
 export class Ball extends GameObject {
-
   #id;
   #mass;
   #force = new Force();
@@ -31,7 +30,10 @@ export class Ball extends GameObject {
    * @return {Acceleration} Calculated from mass and force.
    */
   get acceleration() {
-    return new Acceleration(this.#force.x / this.#mass, this.#force.y / this.#mass);
+    return new Acceleration(
+      this.#force.x / this.#mass,
+      this.#force.y / this.#mass,
+    );
   }
 
   /**
@@ -76,5 +78,4 @@ export class Ball extends GameObject {
   get id() {
     return this.#id;
   }
-
 }

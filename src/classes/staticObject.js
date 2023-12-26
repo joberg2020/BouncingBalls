@@ -1,7 +1,6 @@
 import { GameObject } from "./gameObject";
 
 export class StaticObject extends GameObject {
-
   #isHole;
 
   constructor(shape, isHole = false) {
